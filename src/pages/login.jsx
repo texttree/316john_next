@@ -12,7 +12,6 @@ export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
-  const [password, setPassword] = useState("");
   const handleLogout = async () => {
     try {
       const { error } = await supabase.auth.signOut();
@@ -25,17 +24,17 @@ export default function Login() {
   };
   const handleLogin = async () => {
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (error) throw error;
+      // const { error } = await supabase.auth.signIn({
+      //   email,
+      // });
+      // if (error) throw error;
       setError(false);
       router.push(router.query?.redirectedFrom ?? "/projects");
     } catch (error) {
       setError(error.message);
     }
   };
+
   return (
     <div>
       {user?.email ? (
@@ -80,22 +79,6 @@ export default function Login() {
                   onChange={({ target: { value } }) => setEmail(value)}
                   className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-              </div>
-              <div>
-                <div className="flex items-center justify-between">
-                  <label className="block text-sm font-medium leading-6 text-gray-900">
-                    {t("password")}
-                  </label>
-                </div>
-                <div className="mt-2">
-                  <input
-                    type="password"
-                    placeholder="password"
-                    value={password}
-                    onChange={({ target: { value } }) => setPassword(value)}
-                    className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
               </div>
             </form>
             <br />

@@ -363,3 +363,7 @@ body {
     border-color: #aaa;
   }
 }
+
+.custom-purple {
+  background: linear-gradient(292deg, #A7A0BA -1.2%, #C8C5D1 99.04%);
+}

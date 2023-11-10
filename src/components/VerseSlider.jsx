@@ -1,6 +1,8 @@
 import { useEffect, useState, useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { useRecoilState } from "recoil";
+
+import Link from "next/link";
 // import { createBrowserHistory } from "history";
 import { useSwipeable } from "react-swipeable";
 import NextButton from "./NextButton";
@@ -10,7 +12,7 @@ import { languageIndexState, translateIndexState } from "../atoms";
 
 const VerseSlider = () => {
   // let history = createBrowserHistory();
-  const { t } = useTranslation("common");
+  const { t } = useTranslation();
 
   const [translateIndex, setTranslateIndex] =
     useRecoilState(translateIndexState);
@@ -222,6 +224,13 @@ const VerseSlider = () => {
               {t("License")}
               {`: ${currentGroup[translateIndex].license}`}
             </a>
+          </div>
+          <div className="text-center mt-4 flex items-center justify-center">
+            <Link href="/login">
+              <div className="cursor-pointer bg-primary text-white h-10 w-60 rounded-lg flex items-center justify-center">
+                {t("Добавить перевод")}
+              </div>
+            </Link>
           </div>
         </div>
       </div>
