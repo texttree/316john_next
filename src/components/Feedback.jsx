@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import axios from "axios";
 
 function Feedback() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");

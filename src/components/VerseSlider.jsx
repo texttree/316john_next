@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { useRecoilState } from "recoil";
 // import { createBrowserHistory } from "history";
 import { useSwipeable } from "react-swipeable";
@@ -10,7 +10,7 @@ import { languageIndexState, translateIndexState } from "../atoms";
 
 const VerseSlider = () => {
   // let history = createBrowserHistory();
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   const [translateIndex, setTranslateIndex] =
     useRecoilState(translateIndexState);

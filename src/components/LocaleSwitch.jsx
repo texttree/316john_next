@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { langs } from "../constants";
 import Locale from "../logo.svg";
 
 function LocaleSwitch() {
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslation("common");
   const [open, setOpen] = useState(false);
   return (
     <div className="relative">

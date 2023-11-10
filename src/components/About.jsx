@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
-
+import { useTranslation } from "next-i18next";
 import Feedback from "./Feedback";
 import Modal from "./Modal";
 import PrevButton from "./PrevButton";
@@ -9,7 +8,7 @@ import { languageGroups, countVerse } from "../helper";
 import Youtube from "../youtube.svg";
 
 function About() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const [isOpen, setIsOpen] = useState(false);
 
   return (
