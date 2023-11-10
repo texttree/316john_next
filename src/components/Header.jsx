@@ -1,4 +1,4 @@
-// import LocaleSwitch from "./LocaleSwitch";
+import LocaleSwitch from "./LocaleSwitch";
 import DarkModeToggle from "./DarkModeToggle";
 import Logo from "../logo.svg";
 import { useTranslation } from "next-i18next";
@@ -13,7 +13,7 @@ function Header() {
       </div>
       <div className="flex absolute right-0">
         <DarkModeToggle />
-        {/* <LocaleSwitch /> */}
+        <LocaleSwitch />
       </div>
     </div>
   );

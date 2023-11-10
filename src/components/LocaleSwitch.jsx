@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { langs } from "../constants";
-import Locale from "../logo.svg";
+import Locale from "../locale.svg";
 
 function LocaleSwitch() {
   const { i18n } = useTranslation("common");
