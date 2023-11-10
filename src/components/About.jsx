@@ -14,18 +14,18 @@ function About() {
 
   return (
     <div>
-      <div className="flex justify-center mt-24 mb-16 ">
+      <div className="flex justify-center mt-24 mb-16">
         <button className="font-bold underline" onClick={() => setIsOpen(true)}>
           {t("AboutProject")}
         </button>
       </div>
       <Modal isOpen={isOpen} close={() => setIsOpen(false)}>
-        <div className="mx-auto max-w-4xl px-7 pb-10 h-full space-y-20 widget">
+        <div className="mx-auto max-w-4xl px-7 pb-10 h-full space-y-20 bg-white dark:bg-primary">
           <div className="relative">
             <div className="absolute py-6 z-10">
               <PrevButton
                 onClick={() => setIsOpen(false)}
-                className="w-10 h-10"
+                className="w-10 h-10 bg-zinc-100 dark:bg-widget hover:bg-zinc-200 active:bg-zinc-300  dark:hover:bg-zinc-700 dark:active:bg-zinc-600"
               />
             </div>
             <Header />

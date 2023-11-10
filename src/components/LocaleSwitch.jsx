@@ -6,12 +6,6 @@ import Locale from "../logo.svg";
 function LocaleSwitch() {
   const { i18n } = useTranslation();
   const [open, setOpen] = useState(false);
-
-  const languageCode =
-    i18n.language && i18n.language.split("-")[0]
-      ? i18n.language.split("-")[0]
-      : "en";
-
   return (
     <div className="relative">
       <button
@@ -19,7 +13,13 @@ function LocaleSwitch() {
         onClick={() => setOpen((prev) => !prev)}
       >
         <Locale className="w-6 h-6" />
-        <span>{langs.find((lang) => lang.code === languageCode)?.short}</span>
+        <span>
+          {
+            langs.filter(
+              (lang) => lang.code === i18n.language.split("-")[0]
+            )?.[0]?.short
+          }
+        </span>
       </button>
       {open && (
         <ul className="z-50 overflow-hidden absolute dark:text-black mt-2 rounded shadow-md right-0">

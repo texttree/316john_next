@@ -1,4 +1,4 @@
-import LocaleSwitch from "./LocaleSwitch";
+// import LocaleSwitch from "./LocaleSwitch";
 import DarkModeToggle from "./DarkModeToggle";
 import Logo from "../logo.svg";
 
@@ -15,5 +15,4 @@ function Header() {
     </div>
   );
 }
-
 export default Header;
