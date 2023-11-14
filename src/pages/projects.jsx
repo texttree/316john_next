@@ -21,27 +21,33 @@ export default function Login() {
   return (
     <div>
       <div>
-        <div className="p-10 flex py-6 justify-start items-start relative">
-          <div className="text-primary dark:text-white">
-            <Logo />
+        <div className="flex justify-start items-start relative">
+          <div className="text-primary border-r border-b border-gray-300 dark:text-white">
+            <div className="mt-6 mr-8 ml-8 mb-6">
+              <Logo />
+            </div>
           </div>
-          <div className="ml-4">
-            <LocaleSwitch />
+          <div className="flex border-r border-b  border-gray-300 dark:border-white  ">
+            <div className="mt-9 mb-6">
+              <DarkModeToggle />
+            </div>
+            <div className="mt-9 mr-1 mb-8">
+              <LocaleSwitch />
+            </div>
+            <div className="mt-9 mr-2 ml-2 mb-6">
+              <Bell className=" w-6 h-6" />
+            </div>
           </div>
-          <div className="ml-4">
-            <DarkModeToggle />
+          <div className="flex border-r border-b  border-gray-300 dark:border-white  ">
+            <div className="mt-9 mr-2 ml-6 mb-8">
+              <Home className="w-6 h-6" />
+            </div>
+            <div className="mt-10 mr-6 ml-2 mb-7">Мои переводы</div>
           </div>
-          <div className="ml-4">
-            <Bell className="w-6 h-6" />
-          </div>
-          <div className="ml-4">
-            <Home className="w-6 h-6" />
-          </div>
-          <div className="ml-4">Мои переводы</div>
         </div>
       </div>
-      <div className="m-20 p-24 custom-purple w-96 h-64 flex-shrink-0 rounded">
-        <Plus className="w-6 h-6" />
+      <div className="m-28 p-24 custom-purple w-96 h-64 flex-shrink-0 rounded border border-primary dark:border-white border-r-0">
+        <Plus className="ml-14 w-16 h-16 text-white" />
       </div>
     </div>
   );
