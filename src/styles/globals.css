@@ -4,15 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   background-color: white;
   color: black;
 }
 
 .dark body {
-  background-color:  #323653; 
-  color:  white;
+  background-color: #323653;
+  color: white;
 }
 
 :root {
@@ -365,5 +364,15 @@ body {
 }
 
 .custom-purple {
-  background: linear-gradient(292deg, #A7A0BA -1.2%, #C8C5D1 99.04%);
+  background: linear-gradient(292deg, #a7a0ba -1.2%, #c8c5d1 99.04%);
+}
+
+.notification-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 5px;
+  height: 5px;
+  background-color: red;
+  border-radius: 50%;
 }
