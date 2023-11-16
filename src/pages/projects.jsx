@@ -34,8 +34,9 @@ export default function Login() {
             <div className="mt-9 mr-1 mb-8">
               <LocaleSwitch />
             </div>
-            <div className="mt-9 mr-2 ml-2 mb-6">
+            <div className="mt-9 mr-2 ml-2 mb-6 relative">
               <Bell className=" w-6 h-6" />
+              {1 && <div className="notification-badge"></div>}
             </div>
           </div>
           <div className="flex border-r border-b  border-gray-300 dark:border-white  ">
@@ -43,6 +44,11 @@ export default function Login() {
               <Home className="w-6 h-6" />
             </div>
             <div className="mt-10 mr-6 ml-2 mb-7">Мои переводы</div>
+          </div>
+          <div className="flex-grow">
+            <div className="flex border-b border-gray-300 dark:border-white">
+              <div className="mt-9 mb-14 "></div>
+            </div>
           </div>
         </div>
       </div>
