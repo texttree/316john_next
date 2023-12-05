@@ -6,12 +6,14 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function Login() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const user = useUser();
   const supabase = useSupabaseClient();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("ru");
+
   const handleLogout = async () => {
     try {
       const { error } = await supabase.auth.signOut();
@@ -33,6 +35,10 @@ export default function Login() {
     } catch (error) {
       setError(error.message);
     }
+  };
+
+  const handleLanguageChange = (language) => {
+    setSelectedLanguage(language);
   };
 
   return (
@@ -60,35 +66,62 @@ export default function Login() {
           </div>
         </>
       ) : (
-        <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="flex min-h-full flex-col justify-center px-6 py-96 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-              <h2 className="mt-10 text-center text-2xl font-bold leading-9 mb-4 tracking-tight text-gray-900">
-                {t("signAccount")}
+            <div className="sm:mx-auto sm:w-full sm:max-w-sm flex items-center">
+              <h2 className="mt-10 text-2xl font-bold leading-9 mb-4 tracking-tight text-gray-900">
+                {t("SignAccount")}
               </h2>
+
+              <div
+                className={`ml-48  mt-4 cursor-pointer text-sm ${
+                  selectedLanguage === "ru" ? "text-gray-500" : ""
+                }`}
+                onClick={() => handleLanguageChange("ru")}
+              >
+                Ru
+              </div>
+
+              <div
+                className={`ml-2 mt-4 cursor-pointer text-sm ${
+                  selectedLanguage === "en" ? "text-gray-500" : ""
+                }`}
+                onClick={() => handleLanguageChange("en")}
+              >
+                En
+              </div>
             </div>
+
             <form className="space-y-6">
               <div>
                 <label className="block text-sm font-medium leading-6 text-gray-900">
-                  {t("email")}
+                  {t("Email")}
                 </label>
                 <input
                   type="email"
                   placeholder="email"
                   value={email}
                   onChange={({ target: { value } }) => setEmail(value)}
-                  className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-none border-b border-gray-300 px-2 py-1.5 text-gray-900 shadow-none focus:ring-0 focus:border-0 focus:border-b-2 focus:border-primary focus:outline-none focus:ring-transparent sm:text-sm sm:leading-6"
                 />
               </div>
             </form>
             <br />
             <p>{error}</p>
-            <button
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              onClick={handleLogin}
-            >
-              {t("signIn")}
-            </button>
+            <div className="flex">
+              <button
+                className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={handleLogin}
+              >
+                {t("SignIn")}
+              </button>
+              <button
+                className="flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={handleLogin}
+              >
+                {t("Login")}
+              </button>
+            </div>
           </div>
         </div>
       )}
