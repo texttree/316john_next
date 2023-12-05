@@ -23,8 +23,11 @@ export default function Login() {
       <div>
         <div className="flex justify-start items-start relative">
           <div className="text-primary border-r border-b border-gray-300 dark:text-white">
-            <div className="mt-6 mr-8 ml-8 mb-6">
-              <Logo />
+            <div
+              className="mt-6 mr-8 ml-8 mb-6"
+              onClick={() => router.push("/")}
+            >
+              <Logo className="cursor-pointer" />
             </div>
           </div>
           <div className="flex border-r border-b  border-gray-300 dark:border-white  ">
