@@ -29,7 +29,6 @@ export default function Login() {
 
       if (error) throw error;
       setError(false);
-      router.push("/login");
     } catch (error) {
       setError(error.message);
     }
@@ -88,7 +87,7 @@ export default function Login() {
           </div>
         </>
       ) : (
-        <div className="flex min-h-full flex-col justify-center px-6 py-96 lg:px-8">
+        <div className="flex min-h-full flex-col justify-center px-6 py-72 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm flex items-center">
               <h2 className="mt-10 text-2xl font-bold leading-9 mb-4 tracking-tight text-gray-900">
