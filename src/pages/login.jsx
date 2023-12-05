@@ -6,13 +6,12 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function Login() {
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
   const user = useUser();
   const supabase = useSupabaseClient();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("ru");
 
   const handleLogout = async () => {
     try {
@@ -24,6 +23,7 @@ export default function Login() {
       setError(error.message);
     }
   };
+
   const handleLogin = async () => {
     try {
       // const { error } = await supabase.auth.signIn({
@@ -38,7 +38,7 @@ export default function Login() {
   };
 
   const handleLanguageChange = (language) => {
-    setSelectedLanguage(language);
+    i18n.changeLanguage(language);
   };
 
   return (
@@ -72,10 +72,9 @@ export default function Login() {
               <h2 className="mt-10 text-2xl font-bold leading-9 mb-4 tracking-tight text-gray-900">
                 {t("SignAccount")}
               </h2>
-
               <div
-                className={`ml-48  mt-4 cursor-pointer text-sm ${
-                  selectedLanguage === "ru" ? "text-gray-500" : ""
+                className={`ml-48 mt-4 cursor-pointer text-sm ${
+                  i18n.language === "ru" ? "text-gray-500" : ""
                 }`}
                 onClick={() => handleLanguageChange("ru")}
               >
@@ -84,7 +83,7 @@ export default function Login() {
 
               <div
                 className={`ml-2 mt-4 cursor-pointer text-sm ${
-                  selectedLanguage === "en" ? "text-gray-500" : ""
+                  i18n.language === "en" ? "text-gray-500" : ""
                 }`}
                 onClick={() => handleLanguageChange("en")}
               >
@@ -128,6 +127,7 @@ export default function Login() {
     </div>
   );
 }
+
 export async function getServerSideProps({ locale }) {
   return {
     props: {
