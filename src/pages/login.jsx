@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Logo from "../logo.svg";
 
 export default function Login() {
   const { t, i18n } = useTranslation("common");
@@ -58,6 +59,12 @@ export default function Login() {
 
   return (
     <div>
+      <div
+        className="flex py-6 justify-center items-center relative"
+        onClick={() => router.push("/")}
+      >
+        <Logo className="cursor-pointer" />
+      </div>
       {user?.email ? (
         <>
           <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 sm:mx-auto sm:w-full sm:max-w-sm">
