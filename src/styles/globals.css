@@ -4,6 +4,30 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-100: theme("colors.slate.550");
+  --primary-200: theme("colors.slate.600");
+  --primary-300: theme("colors.slate.580");
+  --primary-400: theme("colors.slate.650");
+  --secondary-10: theme("colors.white");
+  --secondary-100: theme("colors.gray.150");
+  --secondary-200: theme("colors.gray.250");
+  --secondary-300: theme("colors.gray.450");
+  --secondary-400: theme("colors.yellow.650");
+  --text-primary: theme("colors.neutral.800");
+  --text-secondary: theme("colors.white");
+  --invalid: theme("colors.red.500");
+  --divide-verse1: theme("colors.stone.400");
+  --divide-verse2: theme("colors.stone.300");
+  --divide-verse3: theme("colors.zinc.300");
+  --divide-verse4: theme("colors.gray.200");
+  --divide-verse5: theme("colors.orange.200");
+  --divide-verse6: theme("colors.slate.400");
+  --divide-verse7: theme("colors.slate.300");
+  --divide-verse8: theme("colors.emerald.400");
+  --divide-verse9: theme("colors.emerald.200");
+}
+
 body {
   background-color: white;
   color: black;
@@ -363,8 +387,22 @@ body {
   }
 }
 
+.h-300 {
+  height: 300px;
+}
+
+.w-400 {
+  width: 400px;
+}
+
 .custom-purple {
+  border-radius: 10px;
   background: linear-gradient(292deg, #a7a0ba -1.2%, #c8c5d1 99.04%);
+}
+
+.custom-gray {
+  border-radius: 10px;
+  background: linear-gradient(109deg, #d8d8d8 1.61%, #b3b5c0 96.85%), #9ca3af;
 }
 
 .notification-badge {
@@ -375,4 +413,20 @@ body {
   height: 5px;
   background-color: red;
   border-radius: 50%;
+}
+
+.f-screen-appbar {
+  min-height: calc(100vh - 11.5rem);
+}
+
+.appbar {
+  @apply fixed sm:relative top-0 sm:top-auto left-0 sm:left-auto right-0 sm:right-auto bg-th-primary-100 sm:bg-inherit z-[999] sm:z-auto mx-auto flex md:items-center flex-1 flex-col justify-between px-5 py-2 gap-1 max-w-7xl sm:px-5 md:flex-row md:h-16 lg:px-8 xl:px-0 xl:w-11/12 2xl:px-0 2xl:w-4/5 shadow-lg md:shadow-none;
+}
+
+.layout-appbar {
+  @apply f-screen-appbar flex flex-col gap-5 md:gap-7 items-center px-2 md:px-5 pt-5 md:pt-0 font-sans;
+}
+
+.card {
+  @apply p-3 sm:py-5 sm:px-8 rounded-2xl border border-th-secondary-300 shadow-md;
 }
