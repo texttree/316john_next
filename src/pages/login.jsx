@@ -40,7 +40,7 @@ export default function Login() {
         setShowPasswordInput(true);
         setIsLoginButtonActive(false);
       } else {
-        router.push(router.query?.redirectedFrom ?? "/projects");
+        router.push(router.query?.redirectedFrom ?? "/agreements");
       }
       // const { error } = await supabase.auth.signIn({
       //   email,

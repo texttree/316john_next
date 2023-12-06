@@ -12,7 +12,7 @@ import { languageIndexState, translateIndexState } from "../atoms";
 
 const VerseSlider = () => {
   // let history = createBrowserHistory();
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   const [translateIndex, setTranslateIndex] =
     useRecoilState(translateIndexState);
@@ -228,7 +228,7 @@ const VerseSlider = () => {
           <div className="text-center mt-4 flex items-center justify-center">
             <Link href="/login">
               <div className="cursor-pointer bg-primary text-white h-10 w-60 rounded-lg flex items-center justify-center">
-                {t("Добавить перевод")}
+                {t("Add a translation")}
               </div>
             </Link>
           </div>
