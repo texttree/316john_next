@@ -1,66 +1,77 @@
-import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState } from "react";
-import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Logo from "../logo.svg";
-import Bell from "../bell.svg";
-import Home from "../home.svg";
 import Plus from "../plus.svg";
-
-import DarkModeToggle from "@/components/DarkModeToggle";
-import LocaleSwitch from "@/components/LocaleSwitch";
+import HeaderProject from "./HeaderProject";
 
 export default function Login() {
-  const { t } = useTranslation();
-  const user = useUser();
-  const supabase = useSupabaseClient();
-  const router = useRouter();
+  const [isPlusVisible, setPlusVisible] = useState(true);
+  const [selectedOptionSrc, setSelectedOptionSrc] = useState("infoSrcLang");
+  const [selectedOptionDest, setSelectedOptionDest] = useState("infoDestLang");
+
+  const togglePlusVisibility = () => {
+    setPlusVisible((prevVisibility) => !prevVisibility);
+  };
+
+  const handleSelectChangeSrc = (event) => {
+    selectedOptionSrc(event.target.value);
+  };
+
+  const handleSelectChangeDest = (event) => {
+    selectedOptionDest(event.target.value);
+  };
 
   return (
     <div>
-      <div>
-        <div className="flex justify-start items-start relative">
-          <div className="text-primary border-r border-b border-gray-300 dark:text-white">
-            <div
-              className="mt-6 mr-8 ml-8 mb-6"
-              onClick={() => router.push("/")}
-            >
-              <Logo className="cursor-pointer" />
-            </div>
-          </div>
-          <div className="flex border-r border-b  border-gray-300 dark:border-white  ">
-            <div className="mt-9 mb-6">
-              <DarkModeToggle />
-            </div>
-            <div className="mt-9 mr-1 mb-8">
-              <LocaleSwitch />
-            </div>
-            <div className="mt-9 mr-2 ml-2 mb-6 relative">
-              <Bell className=" w-6 h-6" />
-              {1 && <div className="notification-badge"></div>}
-            </div>
-          </div>
-          <div className="flex border-r border-b  border-gray-300 dark:border-white  ">
-            <div className="mt-9 mr-2 ml-6 mb-8">
-              <Home className="w-6 h-6" />
-            </div>
-            <div className="mt-10 mr-6 ml-2 mb-7">Мои переводы</div>
-          </div>
-          <div className="flex-grow">
-            <div className="flex border-b border-gray-300 dark:border-white">
-              <div className="mt-9 mb-14 "></div>
-            </div>
-          </div>
+      <HeaderProject />
+      {isPlusVisible && (
+        <div className="m-28 p-24 w-96 h-64 custom-purple">
+          <Plus
+            className="ml-14 w-16 h-16 text-white cursor-pointer"
+            onClick={togglePlusVisibility}
+          />
         </div>
-      </div>
-      <div className="m-28 p-24 custom-purple w-96 h-64 flex-shrink-0 rounded border border-primary dark:border-white border-r-0">
-        <Plus className="ml-14 w-16 h-16 text-white" />
+      )}
+      <div className="flex justify-center mt-80">
+        {!isPlusVisible && (
+          <div className="w-400 h-300 custom-gray">
+            <div className="flex flex-col mt-10 ml-10">
+              <p className="text-lg text-center text-bold">
+                Выберите языки переводa
+              </p>
+              <select
+                className="w-80 h-10 mt-5 bg-white rounded-2xl pl-5"
+                defaultValue={selectedOptionSrc}
+                onChange={handleSelectChangeSrc}
+              >
+                <option value="infoSrcLang">С какого языка</option>
+                <option value="option2">Вариант 2</option>
+                <option value="option3">Вариант 3</option>
+              </select>
+              <select
+                className="w-80 h-10 mt-5 bg-white rounded-2xl pl-5"
+                defaultValue={selectedOptionDest}
+                onChange={handleSelectChangeDest}
+              >
+                <option value="infoDestLang">На какой язык</option>
+                <option value="optionB">Вариант B</option>
+                <option value="optionC">Вариант C</option>
+              </select>
+              <div className="flex justify-center mt-8">
+                <button className="bg-white text-black px-6 py-2.5 rounded-full flex items-center gap-2">
+                  Ок
+                </button>
+                <button className="ml-6 bg-white text-black  px-8 py-2.5 rounded-full flex items-center gap-10">
+                  Отмена
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 }
+
 export async function getServerSideProps({ locale }) {
   return {
     props: {
