@@ -13,6 +13,20 @@ export default function CreateProject() {
     setSelectedOptionDest(event.target.value);
   };
 
+  const handleCreateProject = async () => {
+    try {
+      router.push(router.query?.redirectedFrom ?? "/CurrentProject");
+
+      // const { error } = await supabase.auth.signIn({
+      //   email,
+      // });
+      // if (error) throw error;
+      // setError(false);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <div className="w-400 h-300 custom-gray">
       <div className="flex flex-col mt-10 ml-10">
@@ -39,7 +53,10 @@ export default function CreateProject() {
           <button className="bg-white text-black px-6 py-2.5 rounded-full flex items-center gap-2">
             Ок
           </button>
-          <button className="ml-6 bg-white text-black  px-8 py-2.5 rounded-full flex items-center gap-10">
+          <button
+            className="ml-6 bg-white text-black  px-8 py-2.5 rounded-full flex items-center gap-10"
+            onClick={handleCreateProject}
+          >
             Отмена
           </button>
         </div>

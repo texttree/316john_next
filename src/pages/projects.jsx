@@ -2,7 +2,7 @@ import { useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Plus from "../plus.svg";
 import HeaderProject from "./HeaderProject";
-import CreateProject from "./CreateProject";
+import CurrentProject from "./CurrentProject";
 
 export default function Projects() {
   const [isPlusVisible, setPlusVisible] = useState(true);
@@ -23,7 +23,7 @@ export default function Projects() {
         </div>
       )}
       <div className="flex justify-center mt-80">
-        {!isPlusVisible && <CreateProject />}
+        {!isPlusVisible && <CurrentProject />}
       </div>
     </div>
   );
