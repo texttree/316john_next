@@ -10,6 +10,8 @@ module.exports = {
     extend: {
       backgroundColor: {
         primary: "#323653",
+        customGreen: "#9CAFA0",
+        customGray: "#9CA3AF",
         widget: "#1D1F34",
       },
       colors: {
