@@ -3,6 +3,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Plus from "../plus.svg";
 import HeaderProject from "./HeaderProject";
 import CurrentProject from "./CurrentProject";
+import DoneProject from "./DoneProject";
 
 export default function Projects() {
   const [isPlusVisible, setPlusVisible] = useState(true);
@@ -21,6 +22,18 @@ export default function Projects() {
     progress: 5,
     nameProgress: "Чтение смыслового и дословного перевода",
   };
+
+  const projectDoneTemp = {
+    nameProject: "Название/Язык",
+    verse:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus\
+    voluptatem ab expedita totam repudiandae mollitia perspiciatis quam\
+    vitae! Tempora nostrum architecto enim! Libero aliquid quidem alias.\
+    Magni ipsa amet sunt?",
+    progress: 10,
+    nameProgress: "Опубликовано",
+  };
+
   return (
     <div>
       <HeaderProject />
@@ -34,7 +47,14 @@ export default function Projects() {
       )}
       <div className="flex justify-center mt-80">
         {!isPlusVisible && (
-          <CurrentProject project={projectTemp}></CurrentProject>
+          <div className="flex ">
+            <div className="mr-10">
+              <CurrentProject project={projectTemp} />
+            </div>
+            <div>
+              <DoneProject project={projectDoneTemp} />
+            </div>
+          </div>
         )}
       </div>
     </div>
