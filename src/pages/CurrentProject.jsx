@@ -1,33 +1,28 @@
-import { useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-export default function CurrentProject() {
-  const [selectedOptionSrc, setSelectedOptionSrc] = useState("infoSrcLang");
-  const [selectedOptionDest, setSelectedOptionDest] = useState("infoDestLang");
-
-  const handleSelectChangeSrc = (event) => {
-    setSelectedOptionSrc(event.target.value);
-  };
-
-  const handleSelectChangeDest = (event) => {
-    setSelectedOptionDest(event.target.value);
-  };
-
+import ArrowRight from "public/arrow-right.svg";
+export default function CurrentProject({ project }) {
   return (
     <div className="w-400 h-300 custom-gray">
       <div className="flex flex-col mt-10 text-center">
-        <p className="text-3xl text-center text-bold">Название/Язык</p>
-        <p className="m-4">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
-          voluptatem ab expedita totam repudiandae mollitia perspiciatis quam
-          vitae! Tempora nostrum architecto enim! Libero aliquid quidem alias.
-          Magni ipsa amet sunt?
-        </p>
-        <div className="flex justify-center mt-3">
-          <button className="bg-white text-black px-24 py-2 rounded-full flex items-center gap-10">
-            <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
-            Отмена
-          </button>
+        <p className="text-3xl text-center text-bold">{project.nameProject}</p>
+        <p className="m-4">{project.verse}</p>
+        <div className="mx-5 mt-1">
+          <div className="bg-white h-12 text-black rounded-full flex items-start self-start">
+            <div className="flex justify-items-start">
+              <div className="w-8 h-8 my-2 ml-2 bg-primary rounded-full">
+                <div className="mt-1 text-white text-xl">
+                  {project.progress}
+                </div>
+              </div>
+              <div className="w-52  ml-3 my-1 text-lg text-left leading-5">
+                {project.nameProgress}
+              </div>
+              <div className="w-7 h-2 my-3 ml-16">
+                <ArrowRight />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

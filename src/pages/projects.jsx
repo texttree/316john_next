@@ -11,6 +11,16 @@ export default function Projects() {
     setPlusVisible((prevVisibility) => !prevVisibility);
   };
 
+  const projectTemp = {
+    nameProject: "Название/Язык",
+    verse:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus\
+    voluptatem ab expedita totam repudiandae mollitia perspiciatis quam\
+    vitae! Tempora nostrum architecto enim! Libero aliquid quidem alias.\
+    Magni ipsa amet sunt?",
+    progress: 5,
+    nameProgress: "Чтение смыслового и дословного перевода",
+  };
   return (
     <div>
       <HeaderProject />
@@ -23,7 +33,9 @@ export default function Projects() {
         </div>
       )}
       <div className="flex justify-center mt-80">
-        {!isPlusVisible && <CurrentProject />}
+        {!isPlusVisible && (
+          <CurrentProject project={projectTemp}></CurrentProject>
+        )}
       </div>
     </div>
   );
