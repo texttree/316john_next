@@ -6,7 +6,8 @@ export default function CurrentProject({ project }) {
   const router = useRouter();
 
   const handleArrowClick = () => {
-    router.push(router.query?.redirectedFrom ?? "/InfoVerse");
+    // router.push(router.query?.redirectedFrom ?? "/InfoVerse");
+    router.push(router.query?.redirectedFrom ?? "/RsobRlobVerse");
   };
 
   return (
