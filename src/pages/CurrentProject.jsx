@@ -1,7 +1,14 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
 import ArrowRight from "public/arrow-right.svg";
 export default function CurrentProject({ project }) {
+  const router = useRouter();
+
+  const handleArrowClick = () => {
+    router.push(router.query?.redirectedFrom ?? "/InfoVerse");
+  };
+
   return (
     <div className="w-400 h-300 custom-gray">
       <div className="flex flex-col mt-10 text-center">
@@ -20,7 +27,10 @@ export default function CurrentProject({ project }) {
               <div className="w-52  ml-3 my-1 text-lg text-left leading-5">
                 {project.nameProgress}
               </div>
-              <div className="w-7 h-2 my-3 ml-14 cursor-pointer">
+              <div
+                className="w-7 h-2 my-3 ml-14 cursor-pointer"
+                onClick={handleArrowClick}
+              >
                 <ArrowRight />
               </div>
             </div>
