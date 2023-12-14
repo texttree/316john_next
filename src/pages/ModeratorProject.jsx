@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 
 import ArrowRight from "public/arrow-right.svg";
 import Pencil from "public/pencil.svg";
-import Xmark from "public/x-mark.svg";
 
 export default function CurrentProject({ project }) {
   const router = useRouter();
@@ -11,6 +10,14 @@ export default function CurrentProject({ project }) {
   const handleArrowClick = () => {
     // router.push(router.query?.redirectedFrom ?? "/InfoVerse");
     router.push(router.query?.redirectedFrom ?? "/RsobRlobVerse");
+  };
+
+  const handleCommentProject = async () => {
+    try {
+      router.push(router.query?.redirectedFrom ?? "/CommentModerator");
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   const progressTranlate = () => {
@@ -43,7 +50,10 @@ export default function CurrentProject({ project }) {
             {project.date}
           </div>
           <div className="">
-            <div className="bg-white rounded-full w-14 h-14 ml-24 cursor-pointer text-black flex items-center justify-center">
+            <div
+              className="bg-white rounded-full w-14 h-14 ml-24 cursor-pointer text-black flex items-center justify-center"
+              onClick={handleCommentProject}
+            >
               <Pencil className="w-6 h-6" />
             </div>
           </div>
