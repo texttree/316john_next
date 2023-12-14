@@ -1,9 +1,12 @@
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
+
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+import Link from "next/link";
+
 import Logo from "../logo.svg";
 
 export default function Login() {
@@ -24,7 +27,7 @@ export default function Login() {
         setShowPasswordInput(false);
         setIsLoginButtonActive(true);
       } else {
-        router.push(router.query?.redirectedFrom ?? "/projects");
+        router.push(router.query?.redirectedFrom ?? "/PersonalCardModerator");
       }
 
       if (error) throw error;

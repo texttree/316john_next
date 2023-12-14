@@ -8,8 +8,8 @@ export default function CurrentProject({ project }) {
   const router = useRouter();
 
   const handleArrowClick = () => {
-    // router.push(router.query?.redirectedFrom ?? "/InfoVerse");
-    router.push(router.query?.redirectedFrom ?? "/RsobRlobVerse");
+    router.push(router.query?.redirectedFrom ?? "/InfoVerse");
+    // router.push(router.query?.redirectedFrom ?? "/RsobRlobVerse");
   };
 
   const handleCommentProject = async () => {
@@ -69,7 +69,7 @@ export default function CurrentProject({ project }) {
           {project.nameProject}
         </p>
         <p className="m-4 text-white">{project.verse}</p>
-        <div className="mx-5 mt-1">{progressModerate()}</div>
+        <div className="mx-5 mt-1">{progressTranlate()}</div>
       </div>
     </div>
   );

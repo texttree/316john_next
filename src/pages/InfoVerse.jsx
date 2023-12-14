@@ -1,7 +1,27 @@
+import { useRouter } from "next/router";
+
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+import Footer from "@/Footer";
 import HeaderProject from "./HeaderProject";
 
-export default function InfoVerse() {
+// import useSupabaseClient from "utils/supabaseClient";
+
+export default function UserAgreement() {
+  // const supabase = useSupabaseClient();
+
+  const router = useRouter();
+  const { t } = useTranslation(["common", "users"]);
+  const handleClick = async () => {
+    // const { error } = await supabase.rpc("check_agreement");
+    // if (error) {
+    //   console.error(error);
+    // } else {
+    router.push(`/RsobRlobVerse`);
+    // }
+  };
+
   return (
     <div>
       <HeaderProject />
@@ -40,15 +60,20 @@ export default function InfoVerse() {
             </div>
           </div>
         </div>
+        <Footer
+          textButton={t("common:Next")}
+          textCheckbox={t("users:Done")}
+          handleClick={handleClick}
+        />
       </div>
     </div>
   );
 }
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common"])),
+      ...(await serverSideTranslations(locale, ["common", "users"])),
     },
   };
 }

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-// import Footer from "./Footer";
+import Footer from "@/Footer";
 
 // import useSupabaseClient from "utils/supabaseClient";
 
@@ -12,14 +12,14 @@ export default function UserAgreement() {
 
   const router = useRouter();
   const { t } = useTranslation(["user-agreement", "common", "users"]);
-  // const handleClick = async () => {
-  //   const { error } = await supabase.rpc("check_agreement");
-  //   if (error) {
-  //     console.error(error);
-  //   } else {
-  //     router.push(`/confession`);
-  //   }
-  // };
+  const handleClick = async () => {
+    // const { error } = await supabase.rpc("check_agreement");
+    // if (error) {
+    //   console.error(error);
+    // } else {
+    router.push(`/confession`);
+    // }
+  };
 
   return (
     <div className="layout-appbar">
@@ -58,11 +58,11 @@ export default function UserAgreement() {
           />
         </div>
       </div>
-      {/* <Footer
+      <Footer
         textButton={t("common:Next")}
         textCheckbox={t("users:Agree")}
         handleClick={handleClick}
-      /> */}
+      />
     </div>
   );
 }

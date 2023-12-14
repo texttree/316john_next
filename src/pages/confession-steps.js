@@ -18,7 +18,7 @@ export default function ConfessionSteps() {
   const router = useRouter();
   const [checked, setChecked] = useState(false);
   const [page, setPage] = useState(0);
-  const { getUser } = useCurrentUser();
+  // const { getUser } = useCurrentUser();
 
   const confessionSteps = [
     <p
@@ -79,15 +79,15 @@ export default function ConfessionSteps() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
-  // const handleClick = async () => {
-  //   const { error } = await supabase.rpc("check_confession");
-  //   if (error) {
-  //     console.error(error);
-  //   } else {
-  //     getUser();
-  //     router.push(`/agreements`);
-  //   }
-  // };
+  const handleClick = async () => {
+    // const { error } = await supabase.rpc("check_confession");
+    // if (error) {
+    // console.error(error);
+    // } else {
+    // getUser();
+    router.push(`/agreements`);
+    // }
+  };
 
   return (
     <div className="layout-appbar">
@@ -126,7 +126,7 @@ export default function ConfessionSteps() {
           label={t("users:Agree")}
         />
         <button
-          // onClick={handleClick}
+          onClick={handleClick}
           className="btn-primary w-28"
           disabled={!checked}
         >
