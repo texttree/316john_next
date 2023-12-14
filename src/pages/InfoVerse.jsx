@@ -1,6 +1,4 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Pencil from "public/pencil.svg";
-import Check from "public/check.svg";
 import HeaderProject from "./HeaderProject";
 
 export default function InfoVerse() {
