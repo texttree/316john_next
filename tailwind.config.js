@@ -13,6 +13,7 @@ module.exports = {
         customWhiteGray: "#E1E2E5",
         customGreen: "#9CAFA0",
         customGray: "#9CA3AF",
+        customGray2: "#717C8E",
         widget: "#1D1F34",
       },
       colors: {
